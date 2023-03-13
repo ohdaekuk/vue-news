@@ -1,5 +1,5 @@
-import Vuex from "vuex";
 import Vue from "vue";
+import Vuex from "vuex";
 import actions from "./actions";
 import mutations from "./mutations";
 
@@ -11,10 +11,15 @@ const store = new Vuex.Store({
     news: [],
     jobs: [],
     ask: [],
+    user: [],
+    items: [],
   },
   getters: {
     fetchedAsk(state) {
       return state.ask;
+    },
+    fetchUser(state) {
+      return state.user;
     },
   },
   mutations,

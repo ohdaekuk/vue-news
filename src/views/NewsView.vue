@@ -1,8 +1,19 @@
 <template>
   <div>
-    <div v-for="(NewsData, i) in this.$store.state.news" :key="i">
-      {{ i + 1 }} &nbsp; {{ NewsData.title }} <br /><br />
-    </div>
+    <p v-for="(NewsData, i) in this.$store.state.news" :key="i">
+      <a :href="NewsData.url">{{ NewsData.title }}</a> &nbsp;
+      <small
+        >{{ NewsData.time_ago }} by
+
+        <!-- user 클릭 시 이동 -->
+        <!-- <router-link :to="'/user/' + NewsData.user">
+          {{ NewsData.user }}</router-link
+        > -->
+        <router-link :to="`/user/${NewsData.user}`">
+          {{ NewsData.user }}</router-link
+        >
+      </small>
+    </p>
   </div>
 </template>
 
@@ -17,17 +28,6 @@ export default {
   },
   created() {
     this.$store.dispatch("FETCH_NEWS");
-
-    // fetchNewsList()
-    //   .then((response) => (this.news = response.data))
-    //   .catch((error) => console.log(error));
-    // var vm = this;
-    // axios
-    //   .get("https://api.hnpwa.com/v0/news/1.json")
-    //   .then(function (response) {
-    //     vm.news = response.data;
-    //   })
-    //   .catch((error) => console.log(error));
   },
 };
 </script>

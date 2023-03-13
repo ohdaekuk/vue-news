@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div v-for="(AskData, i) in fetchedAsk" :key="i">
-      {{ i + 1 }} &nbsp; {{ AskData.title }} <br />
-      <br />
-    </div>
-
-    <br /><br />
+    <p v-for="(AskData, i) in fetchedAsk" :key="i">
+      <router-link :to="'/item/' + AskData.id">
+        {{ AskData.title }}
+      </router-link>
+      <small>{{ AskData.time_ago }} by {{ AskData.user }}</small>
+    </p>
   </div>
 </template>
 
@@ -36,7 +36,7 @@ export default {
 
     // 1.
     // ask() {
-    //   return this.$store.state;
+    //   return this.$store.state.ask;
     // },
   },
   created() {

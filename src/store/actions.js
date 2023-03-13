@@ -1,9 +1,15 @@
-import { fetchAskList, fetchJobsList, fetchNewestList } from "../api/index.js";
+import {
+  fetchAskList,
+  fetchJobsList,
+  fetchNewsList,
+  fetchUserInfo,
+  fetchItemsInfo,
+} from "../api/index.js";
 
 export default {
   FETCH_NEWS(context) {
     // context는 mutations를 제어하기 위하여 기본 제공
-    fetchNewestList()
+    fetchNewsList()
       .then((response) => {
         //   console.log(response);
 
@@ -27,8 +33,26 @@ export default {
   FETCH_ASK({ commit }) {
     fetchAskList()
       .then(({ data }) => {
-        //   console.log(response);
+        // console.log(data);
         commit("SET_ASK", data);
+      })
+      .catch((error) => console.log(error));
+  },
+
+  FETCH_USER({ commit }, name) {
+    fetchUserInfo(name)
+      .then(({ data }) => {
+        // console.log(data);
+        commit("SET_USER", data);
+      })
+      .catch((error) => console.log(error));
+  },
+
+  FETCH_ITEMS({ commit }, id) {
+    fetchItemsInfo(id)
+      .then(({ data }) => {
+        console.log(data);
+        commit("SET_ITEMS", data);
       })
       .catch((error) => console.log(error));
   },

@@ -28,11 +28,11 @@ const router = new VueRouter({
       component: Ask,
     },
     {
-      path: "/user",
+      path: "/user/:id",
       component: User,
     },
     {
-      path: "/item",
+      path: "/item/:id",
       component: Item,
     },
   ],
