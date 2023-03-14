@@ -21,6 +21,9 @@ const store = new Vuex.Store({
     fetchUser(state) {
       return state.user;
     },
+    fetchedItem(state) {
+      return state.items;
+    },
   },
   mutations,
   // actions 호출은 this.$store.dispatch('actions이름')
