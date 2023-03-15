@@ -20,19 +20,10 @@
 
 <script>
 import ListItem from "@/components/ListItem.vue";
-<<<<<<< HEAD
-// import { fetchJobsList } from "../api/index.js";
-export default {
-  components: { ListItem },
-
-  created() {
-    // this.$store.dispatch("FETCH_JOBS");
-=======
 
 export default {
   components: { ListItem },
   created() {
->>>>>>> 605ce67 (ListItem.vue 만들어 리팩토링 230315)
     // fetchJobsList()
     //   .then((response) => (this.jobs = response.data))
     //   .catch((error) => console.log(error));
