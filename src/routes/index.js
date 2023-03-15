@@ -17,14 +17,17 @@ const router = new VueRouter({
       path: "/news",
 
       // component : url 주소로 요청이 왔을 때 표시 될 컴포넌트
+      name: "news",
       component: News,
     },
     {
       path: "/jobs",
+      name: "jobs",
       component: Jobs,
     },
     {
       path: "/ask",
+      name: "ask",
       component: Ask,
     },
     {
