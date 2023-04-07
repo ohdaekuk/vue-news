@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <ToolBar />
-
     <transition name="page">
       <router-view />
     </transition>

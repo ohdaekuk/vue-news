@@ -4,6 +4,7 @@
     <div>
       <ul class="content-list">
         <li v-for="(items, i) in listItems" :key="i" class="post">
+
           <!-- 포인트 영역 -->
           <div class="points">{{ items.points || 0 }}</div>
 
@@ -14,14 +15,11 @@
               <router-link :to="`/item/${items.id}`">
                 {{ items.title }}
               </router-link>
-              
             </p>
-
             <!-- newsView, jobsView title a 태그 -->
             <p class="content-title" v-else>
               <a :href="items.url">{{ items.title }}</a>
             </p>
-
             <!-- jobsView domain  -->
             <small class="link_text" v-if="thisPage === 'jobs'">
               {{ items.time_ago }} by
@@ -29,13 +27,12 @@
                 <a :href="items.url"> {{ items.domain }}</a></small
               >
             </small>
-
             <!-- newsView, askView user -->
             <small class="link-text" v-else>
               {{ items.time_ago }} by
               <router-link class="link-text" :to="`/user/${items.user}`">
-                {{ items.user }}</router-link
-              >
+                {{ items.user }}
+              </router-link>
             </small>
           </div>
         </li>

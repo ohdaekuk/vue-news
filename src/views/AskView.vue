@@ -1,23 +1,7 @@
 <template>
   <div>
     <list-item></list-item>
-    <!-- <ul class="ask_list">
-      <li v-for="(AskData, i) in fetchedAsk" :key="i" class="post">
-        <div class="points">
-          {{ AskData.points }}
-        </div>
-
-        <div>
-          <p class="ask_title">
-            <router-link :to="`/item/${AskData.id}`">
-              {{ AskData.title }}
-            </router-link>
-          </p>
-          <small class="link_text">{{ AskData.user }}</small>
-        </div>
-      </li>
-    </ul>
-  --></div>
+  </div>
 </template>
 
 <script>
