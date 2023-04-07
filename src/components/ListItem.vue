@@ -14,8 +14,7 @@
               <router-link :to="`/item/${items.id}`">
                 {{ items.title }}
               </router-link>
-
-              <a :href="items.url">{{ items.title }}</a>
+              
             </p>
 
             <!-- newsView, jobsView title a 태그 -->
