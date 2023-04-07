@@ -3,11 +3,14 @@
     <div class="user-container">
         <div><i class="fa-solid fa-user"></i></div>
         <div class="user-description">
-            <div>
-                {{ userInfo.id }}
-            </div>
+            
+            <slot name="username">
+            <!-- 상위 컴포넌트에서 정의할 영역-->
+            </slot>
             <div class="time">
+                time : 
                 {{ userInfo.created }}
+                <slot name="time"></slot>
             </div>
         </div>
       </div>
@@ -16,10 +19,13 @@
 
 <script>
 export default {
+    props:{
+        userInfo : Object
+    },  
     computed: {
-    userInfo() {
-      return this.$store.state.user;
-    },
+    // userInfo() {
+    //   return this.$store.state.user;
+    // },
     // ...mapGetters(["fetchUser"]),
   },
 }

@@ -1,6 +1,9 @@
 <template>
   <div>
-    <UserProfile></UserProfile>
+    <UserProfile :userInfo="userInfo">
+      <div slot="username"> {{ userInfo.id }}</div>
+      <template slot="time"></template>
+    </UserProfile>
     <!-- <p>
       name :
       {{ userInfo.id }}
@@ -21,12 +24,12 @@ import UserProfile from '@/components/UserProfile.vue';
 // import { mapGetters } from "vuex";
 export default {
   components: { UserProfile },
-  // computed: {
-  //   userInfo() {
-  //     return this.$store.state.user;
-  //   },
-  //   // ...mapGetters(["fetchUser"]),
-  // },
+  computed: {
+    userInfo() {
+      return this.$store.state.user;
+    },
+    // ...mapGetters(["fetchUser"]),
+  },
 
   created() {
     const userName = this.$route.params.id;
