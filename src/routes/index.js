@@ -1,49 +1,88 @@
-import VueRouter from 'vue-router'
-import Vue from 'vue'
+import VueRouter from "vue-router";
+import Vue from "vue";
 
-// import Ask from "../views/AskView.vue";
-// import Jobs from "../views/JobsView.vue";
-// import News from "../views/NewsView.vue";
-import User from '../views/UserView.vue'
-import Item from '../views/ItemView.vue'
-import createListView from '@/views/CreateListView'
+import Ask from "../views/AskView.vue";
+import Jobs from "../views/JobsView.vue";
+import News from "../views/NewsView.vue";
+import User from "../views/UserView.vue";
+import Item from "../views/ItemView.vue";
+import store from "../store/index.js";
 
-Vue.use(VueRouter)
+import bus from "@/utils/bus";
+// import createListView from "@/views/CreateListView";
+
+Vue.use(VueRouter);
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   routes: [
     {
-      path: '/',
-      redirect: 'news'
+      path: "/",
+      redirect: "news",
     },
     {
-      path: '/news',
-      name: 'news',
-      // component: News,
-      component: createListView('News')
+      path: "/news",
+      name: "news",
+      component: News,
+      // component: createListView("News"),
+      beforeEnter: (to, from, next) => {
+        bus.$emit("start:spinner");
+        store
+          .dispatch("FETCH_LIST", to.name)
+          .then(() => {
+            // bus.$emit("end:spinner");
+            next();
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      },
     },
     {
-      path: '/ask',
-      name: 'ask',
-      // component: Ask,
-      component: createListView('Ask')
+      path: "/ask",
+      name: "ask",
+      component: Ask,
+      // component: createListView("Ask"),
+      beforeEnter: (to, from, next) => {
+        bus.$emit("start:spinner");
+        store
+          .dispatch("FETCH_LIST", to.name)
+          .then(() => {
+            // bus.$emit("end:spinner");
+            next();
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      },
     },
     {
-      path: '/jobs',
-      name: 'jobs',
-      // component: Jobs,
-      component: createListView('Jobs')
+      path: "/jobs",
+      name: "jobs",
+      component: Jobs,
+      // component: createListView("Jobs"),
+      beforeEnter: (to, from, next) => {
+        bus.$emit("start:spinner");
+        store
+          .dispatch("FETCH_LIST", to.name)
+          .then(() => {
+            // bus.$emit("end:spinner");
+            next();
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      },
     },
     {
-      path: '/user/:id',
-      component: User
+      path: "/user/:id",
+      component: User,
     },
     {
-      path: '/item/:id',
-      component: Item
-    }
-  ]
-})
+      path: "/item/:id",
+      component: Item,
+    },
+  ],
+});
 
-export default router
+export default router;

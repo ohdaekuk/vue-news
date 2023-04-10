@@ -13,7 +13,7 @@ const store = new Vuex.Store({
     // ask: [],
     user: {},
     items: {},
-    list:[]
+    list: [],
   },
   getters: {
     fetchedAsk(state) {

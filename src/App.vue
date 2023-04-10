@@ -9,38 +9,38 @@
 </template>
 
 <script>
-import Spinner from './components/Spinner.vue'
-import ToolBar from './components/ToolBar.vue'
-import bus from './utils/bus'
+import Spinner from "./components/Spinner.vue";
+import ToolBar from "./components/ToolBar.vue";
+import bus from "./utils/bus";
 
 export default {
   components: {
     ToolBar,
-    Spinner
+    Spinner,
   },
 
-  data () {
+  data() {
     return {
-      loadingStatus: false
-    }
+      loadingStatus: false,
+    };
   },
   methods: {
-    startSpinner () {
-      this.loadingStatus = true
+    startSpinner() {
+      this.loadingStatus = true;
     },
-    endSpinner () {
-      this.loadingStatus = false
-    }
+    endSpinner() {
+      this.loadingStatus = false;
+    },
   },
-  created () {
-    bus.$on('start:spinner', this.startSpinner)
-    bus.$on('end:spinner', this.endSpinner)
+  created() {
+    bus.$on("start:spinner", this.startSpinner);
+    bus.$on("end:spinner", this.endSpinner);
   },
-  beforeUnmount () {
-    bus.$off('start:spinner', this.startSpinner)
-    bus.$off('end:spinner', this.endSpinner)
-  }
-}
+  beforeUnmount() {
+    bus.$off("start:spinner", this.startSpinner);
+    bus.$off("end:spinner", this.endSpinner);
+  },
+};
 </script>
 
 <style>

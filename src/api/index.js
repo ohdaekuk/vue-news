@@ -20,7 +20,7 @@ const config = {
 //   return axios.get(config.baseUrl + "ask/1.json");
 // }
 
-function fetchList(pageName){
+function fetchList(pageName) {
   return axios.get(`${config.baseUrl}${pageName}/1.json`);
 }
 
@@ -48,5 +48,5 @@ export {
   fetchShowList,
   fetchUserInfo,
   fetchItemsInfo,
-  fetchList
+  fetchList,
 };

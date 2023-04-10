@@ -42,14 +42,14 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      thisPage: ''
-    }
+      thisPage: "",
+    };
   },
   computed: {
-    listItems () {
-      return this.$store.state.list
+    listItems() {
+      return this.$store.state.list;
       // this.thisPage = this.$route.name;
 
       // if (this.thisPage == "news") {
@@ -60,8 +60,8 @@ export default {
       //   return this.$store.state.ask;
       // }
       // return "";
-    }
-  }
+    },
+  },
 
   // created() {
   //   this.thisPage = this.$route.name;
@@ -78,7 +78,7 @@ export default {
 
   //   this.$store.dispatch(actionName);
   // },
-}
+};
 </script>
 
 <style scoped>
