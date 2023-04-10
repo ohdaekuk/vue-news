@@ -8,11 +8,12 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   // state 호출은 this.$store.state
   state: {
-    news: [],
-    jobs: [],
-    ask: [],
+    // news: [],
+    // jobs: [],
+    // ask: [],
     user: {},
     items: {},
+    list:[]
   },
   getters: {
     fetchedAsk(state) {

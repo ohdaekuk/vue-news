@@ -4,7 +4,6 @@
     <div>
       <ul class="content-list">
         <li v-for="(items, i) in listItems" :key="i" class="post">
-
           <!-- 포인트 영역 -->
           <div class="points">{{ items.points || 0 }}</div>
 
@@ -43,40 +42,43 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      thisPage: "",
-    };
+      thisPage: ''
+    }
   },
   computed: {
-    listItems() {
-      if (this.thisPage == "news") {
-        return this.$store.state.news;
-      } else if (this.thisPage == "jobs") {
-        return this.$store.state.jobs;
-      } else if (this.thisPage == "ask") {
-        return this.$store.state.ask;
-      }
-      return "";
-    },
-  },
+    listItems () {
+      return this.$store.state.list
+      // this.thisPage = this.$route.name;
 
-  created() {
-    this.thisPage = this.$route.name;
-
-    let actionName = "";
-
-    if (this.thisPage == "news") {
-      actionName = "FETCH_NEWS";
-    } else if (this.thisPage == "jobs") {
-      actionName = "FETCH_JOBS";
-    } else if (this.thisPage == "ask") {
-      actionName = "FETCH_ASK";
+      // if (this.thisPage == "news") {
+      //   return this.$store.state.news;
+      // } else if (this.thisPage == "jobs") {
+      //   return this.$store.state.jobs;
+      // } else if (this.thisPage == "ask") {
+      //   return this.$store.state.ask;
+      // }
+      // return "";
     }
+  }
 
-    this.$store.dispatch(actionName);
-  },
-};
+  // created() {
+  //   this.thisPage = this.$route.name;
+
+  //   let actionName = "";
+
+  //   if (this.thisPage == "news") {
+  //     actionName = "FETCH_NEWS";
+  //   } else if (this.thisPage == "jobs") {
+  //     actionName = "FETCH_JOBS";
+  //   } else if (this.thisPage == "ask") {
+  //     actionName = "FETCH_ASK";
+  //   }
+
+  //   this.$store.dispatch(actionName);
+  // },
+}
 </script>
 
 <style scoped>

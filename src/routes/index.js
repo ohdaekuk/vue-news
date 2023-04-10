@@ -1,44 +1,49 @@
-import VueRouter from "vue-router";
-import Vue from "vue";
+import VueRouter from 'vue-router'
+import Vue from 'vue'
 
-Vue.use(VueRouter);
+// import Ask from "../views/AskView.vue";
+// import Jobs from "../views/JobsView.vue";
+// import News from "../views/NewsView.vue";
+import User from '../views/UserView.vue'
+import Item from '../views/ItemView.vue'
+import createListView from '@/views/CreateListView'
 
-import Ask from "../views/AskView.vue";
-import Jobs from "../views/JobsView.vue";
-import News from "../views/NewsView.vue";
-import User from "../views/UserView.vue";
-import Item from "../views/ItemView.vue";
+Vue.use(VueRouter)
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   routes: [
     {
-      // path : url 주소
-      path: "/news",
+      path: '/',
+      redirect: 'news'
+    },
+    {
+      path: '/news',
+      name: 'news',
+      // component: News,
+      component: createListView('News')
+    },
+    {
+      path: '/ask',
+      name: 'ask',
+      // component: Ask,
+      component: createListView('Ask')
+    },
+    {
+      path: '/jobs',
+      name: 'jobs',
+      // component: Jobs,
+      component: createListView('Jobs')
+    },
+    {
+      path: '/user/:id',
+      component: User
+    },
+    {
+      path: '/item/:id',
+      component: Item
+    }
+  ]
+})
 
-      // component : url 주소로 요청이 왔을 때 표시 될 컴포넌트
-      name: "news",
-      component: News,
-    },
-    {
-      path: "/jobs",
-      name: "jobs",
-      component: Jobs,
-    },
-    {
-      path: "/ask",
-      name: "ask",
-      component: Ask,
-    },
-    {
-      path: "/user/:id",
-      component: User,
-    },
-    {
-      path: "/item/:id",
-      component: Item,
-    },
-  ],
-});
-
-export default router;
+export default router
