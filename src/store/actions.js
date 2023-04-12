@@ -1,17 +1,18 @@
 import {
-  // fetchAskList,
-  // fetchJobsList,
-  // fetchNewsList,
+  fetchAskList,
+  fetchJobsList,
+  fetchNewsList,
   fetchUserInfo,
   fetchItemsInfo,
   fetchList,
 } from "../api/index.js";
 
 export default {
+  //promise
   // FETCH_NEWS(context) {
   //   // context는 mutations를 제어하기 위하여 기본 제공
-  //  return fetchNewsList()
-  //     .then((response) => {
+  //   return fetchNewsList()
+  //     .then(response => {
   //       //   console.log(response);
 
   //       // mutations를 제어하기 위하여 commit 사용
@@ -19,27 +20,33 @@ export default {
   //       return response;
   //     })
 
-  //     .catch((error) => console.log(error));
+  //     .catch(error => console.log(error));
   // },
 
-  // // context 안에 commit가 있기 때문에 ({commit})로 commit를 바로 사용 가능 ({data})도 같은 맥락
-  // FETCH_JOBS({ commit }) {
-  //  return fetchJobsList()
-  //     .then(({ data }) => {
+  // async
+  async FETCH_NEWS({ commit }) {
+    const { data } = await fetchNewsList();
+    commit("SET_NEWS", data);
+    return data;
+  },
 
-  //       commit("SET_JOBS", data);
-  //     })
-  //     .catch((error) => console.log(error));
-  // },
-  // // context 안에 commit가 있기 때문에 ({commit})로 commit를 바로 사용 가능 ({data})도 같은 맥락
-  // FETCH_ASK({ commit }) {
-  //   return fetchAskList()
-  //     .then(({ data }) => {
+  // context 안에 commit가 있기 때문에 ({commit})로 commit를 바로 사용 가능 ({data})도 같은 맥락
+  async FETCH_JOBS({ commit }) {
+    try {
+      const { data } = await fetchJobsList();
+      commit("SET_JOBS", data);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
 
-  //       commit("SET_ASK", data);
-  //     })
-  //     .catch((error) => console.log(error));
-  // },
+  // context 안에 commit가 있기 때문에 ({commit})로 commit를 바로 사용 가능 ({data})도 같은 맥락
+  async FETCH_ASK({ commit }) {
+    const { data } = await fetchAskList();
+    commit("SET_ASK", data);
+    return data;
+  },
 
   FETCH_USER({ commit }, name) {
     return fetchUserInfo(name)
@@ -57,9 +64,13 @@ export default {
       .catch(error => console.log(error));
   },
 
-  FETCH_LIST({ commit }, pageName) {
-    return fetchList(pageName)
-      .then(({ data }) => commit("SET_LIST", data))
-      .catch(error => console.log(error));
+  async FETCH_LIST({ commit }, pageName) {
+    try {
+      const { data } = await fetchList(pageName);
+      commit("SET_LIST", data);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   },
 };

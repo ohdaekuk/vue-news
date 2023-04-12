@@ -5,8 +5,7 @@
         <router-link slot="username" :to="`/user/${fetchedItem.user}`">
           {{ fetchedItem.user }}
         </router-link>
-        <template slot="time">{{ "Posted " + fetchedItem.time_ago }}</template
-        >1
+        <template slot="time">{{ "Posted " + fetchedItem.time_ago }}</template>
       </UserProfile>
     </section>
     <section>
